@@ -2,16 +2,12 @@ package com.example.bmi2;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
@@ -19,33 +15,36 @@ public class MainActivity extends Activity {
 	private EditText weight;
 	private Button button;
 	private TextView textView;
+	private Button clearButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		textView = (TextView) findViewById(R.id.textView2);
-		
-		height=(EditText) findViewById(R.id.editText1);
-		height.setHint("type your height(m)");
-		
-		weight= (EditText) findViewById(R.id.editText2);
-		weight.setHint("type your weight(kg)");
-				
-		button=(Button) findViewById(R.id.button1);
-		button.setText("send");
+		textView = (TextView) findViewById(R.id.resultTextView);
+		height=(EditText) findViewById(R.id.heighteditText);		
+		weight= (EditText) findViewById(R.id.weighteditText);
+		button=(Button) findViewById(R.id.startButton);
 		button.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String h1 = height.getText().toString();
-				String w1 = weight.getText().toString();
-				float sum = Float.parseFloat(h1)+Float.parseFloat(w1) ;
-				float bmi =  Float.parseFloat(w1)/(Float.parseFloat(h1)*Float.parseFloat(h1)) ;
-				textView.setText("您的BMI值為"+Float.toString(bmi));
+				sendfunction();
 				
+			}
+		});
+
+		clearButton = (Button) findViewById(R.id.clearButton);
+		clearButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				height.getText().clear();
+				weight.getText().clear();
+				textView.setText("BMI");
 			}
 		});
 		
@@ -56,6 +55,14 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	public void sendfunction(){
+		float h1 = Float.parseFloat(height.getText().toString());
+		float w1 = Float.parseFloat(weight.getText().toString());
+		// float sum = Float.parseFloat(h1)+Float.parseFloat(w1) ;
+		float bmi =  (w1)/((h1)*(h1)/10000);
+		textView.setText("您的BMI值為"+bmi);
 	}
 
 }

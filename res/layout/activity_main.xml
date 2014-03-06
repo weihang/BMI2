@@ -8,52 +8,74 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hello user!" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="14dp"
-        android:hint="type your height (m)"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="18dp"
-        android:hint="type your weight (kg)"
-        android:ems="10" />
-
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_below="@+id/editText2"
+        android:layout_alignRight="@+id/weighteditText"
+        android:layout_below="@+id/weighteditText"
         android:layout_marginTop="19dp"
         android:text="send" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignTop="@+id/button1"
-        android:layout_toLeftOf="@+id/button1"
-        android:text="TextView" />
+        android:layout_alignBottom="@+id/startButton"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignTop="@+id/startButton"
+        android:layout_toLeftOf="@+id/startButton"
+        android:gravity="center"
+        android:text="BMI" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/heighteditText"
+        android:text="身高"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/weighteditText"
+        android:layout_alignLeft="@+id/textView3"
+        android:text="體重"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/heighteditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:hint="type your height(cm)"
+        android:layout_marginTop="34dp"
+        android:layout_toRightOf="@+id/textView3"
+        android:ems="10"/>
+
+    <EditText
+        android:id="@+id/weighteditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/heighteditText"
+        android:layout_below="@+id/heighteditText"
+        android:layout_marginTop="21dp"
+        android:ems="10"
+        android:hint="type your weight (kg)" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/startButton"
+        android:layout_alignRight="@+id/startButton"
+        android:layout_below="@+id/startButton"
+        android:text="clear" />
 
 </RelativeLayout>
